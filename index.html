@@ -2,310 +2,434 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CapyShop - Statuine da Collezione</title>
     
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦫</text></svg>">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <title>Capy Arcade</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍊</text></svg>">
+
     <style>
-        /* --- CAPY PALETTE --- */
+        /* --- PALETTE CAPIBARA --- */
         :root {
-            --capy-brown: #8d6e63;
-            --capy-dark: #5d4037;
-            --capy-light: #d7ccc8;
-            --grass-green: #aed581;
-            --water-blue: #81d4fa;
-            --yuzu-orange: #ffb74d;
-            --text-color: #3e2723;
+            --primary: #795548;      /* Marrone Capibara */
+            --primary-dark: #4e342e;
+            --accent: #ffb74d;       /* Arancione Yuzu */
+            --bg-color: #f1f8e9;     /* Verde chiarissimo */
+            --card-bg: #ffffff;
+            --text-main: #3e2723;
+            --green-leaf: #8bc34a;
         }
 
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body { 
-            font-family: 'Fredoka', sans-serif; 
-            margin: 0; 
-            /* Sfondo: un bel prato verde rilassante */
-            background-color: var(--grass-green); 
-            background-image: 
-                radial-gradient(var(--water-blue) 3px, transparent 3px),
-                radial-gradient(var(--capy-light) 3px, transparent 3px);
-            background-size: 50px 50px;
-            background-position: 0 0, 25px 25px;
-            color: var(--text-color); 
-            display: flex; 
-            flex-direction: column; 
-            min-height: 100vh; 
+            font-family: 'Poppins', sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            padding-top: 80px; 
+        }
+
+        h1, h2, h3, .logo { font-family: 'Fredoka', sans-serif; }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--card-bg);
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 15px rgba(93, 64, 55, 0.1);
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100;
+            border-bottom: 4px solid var(--accent);
+        }
+
+        .logo { 
+            font-size: 1.8rem; 
+            color: var(--primary); 
+            display: flex; align-items: center; gap: 10px; 
+            text-decoration: none;
         }
         
-        header { 
-            /* Sfondo: Marrone Capibara */
-            background: linear-gradient(135deg, var(--capy-brown), var(--capy-dark)); 
-            color: #fff; 
-            padding: 2rem 1rem; 
-            text-align: center; 
-            position: relative; 
-            box-shadow: 0 6px 0 rgba(0,0,0,0.2);
-            border-bottom: 5px solid var(--yuzu-orange); /* Dettaglio Arancione Yuzu */
-            z-index: 10;
+        .cart-btn-container { 
+            position: relative; cursor: pointer; 
+            background: var(--bg-color);
+            padding: 10px; border-radius: 50%;
+            transition: 0.3s;
+        }
+        .cart-btn-container:hover { background: var(--accent); }
+        .cart-icon { font-size: 1.4rem; color: var(--primary); }
+        
+        .cart-badge {
+            position: absolute; top: -5px; right: -5px;
+            background-color: #d32f2f; color: white;
+            font-size: 0.75rem; font-weight: bold;
+            width: 22px; height: 22px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid var(--card-bg);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1549603507-28d821215b49?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white; text-align: center; padding: 6rem 1rem;
+            margin-bottom: 2rem;
             border-radius: 0 0 30px 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        
-        header h1 {
-            text-shadow: 3px 3px 0px rgba(0,0,0,0.3);
-            display: inline-block;
-            margin: 10px 0 0 0;
-            font-size: 3rem; 
-            letter-spacing: 1px;
-            line-height: 1.1;
+        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; text-shadow: 2px 2px 0 rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.3rem; font-weight: 600; text-shadow: 1px 1px 0 rgba(0,0,0,0.5); }
+
+        /* --- FILTRI --- */
+        .filters {
+            display: flex; justify-content: center; gap: 15px; margin-bottom: 2rem; flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: var(--card-bg); border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 20px; border-radius: 25px; cursor: pointer;
+            transition: 0.3s; font-weight: 700; font-family: 'Fredoka', sans-serif;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary); color: white; transform: translateY(-3px);
+            box-shadow: 0 4px 0 var(--primary-dark);
         }
 
-        /* Selettore lingua - Stile "Biscotto" */
-        .lang-switch { 
-            position: absolute; 
-            top: 20px; 
-            right: 20px; 
-            display: flex;
-            gap: 8px;
-        }
-
-        .lang-btn { 
-            background: #fff; 
-            border: 2px solid var(--capy-dark); 
-            color: var(--capy-dark); 
-            padding: 8px 12px; 
-            cursor: pointer; 
-            border-radius: 15px; 
-            font-weight: bold;
-            font-family: 'Fredoka', sans-serif;
-            box-shadow: 2px 2px 0px var(--capy-dark);
-            transition: 0.2s; 
-            font-size: 0.9rem;
-        }
-        .lang-btn:active, .lang-btn:hover { 
-            transform: translate(2px, 2px); 
-            box-shadow: 0px 0px 0px var(--capy-dark); 
-            background-color: var(--yuzu-orange); 
-        }
+        /* --- GRIGLIA PRODOTTI --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 50px 20px; }
         
-        .container { 
-            width: 100%;
-            max-width: 1000px; 
-            margin: 0 auto; 
-            padding: 40px 20px; 
-            flex: 1; 
-        }
-
-        section { margin-bottom: 60px; }
-        
-        /* Titoli Sezione - Stile "Tronco" */
-        h2 { 
-            background-color: var(--capy-light);
-            display: inline-block;
-            padding: 10px 25px;
-            border-radius: 25px;
-            border: 3px solid var(--capy-dark);
-            box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
-            color: var(--capy-dark); 
-            transform: rotate(-1deg);
-            margin-bottom: 30px;
-            font-size: 1.5rem;
-        }
-        
-        .games-grid {
+        .product-grid {
             display: grid;
-            grid-template-columns: 1fr; 
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
         }
 
-        @media (min-width: 700px) {
-            .games-grid { grid-template-columns: 1fr 1fr; }
-            .games-grid.three-cols { grid-template-columns: repeat(3, 1fr); }
-
-            /* Effetti Hover PC */
-            .project-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 10px 10px 0px rgba(62, 39, 35, 0.2); }
-            .project-card:hover .card-image { font-size: 5rem; }
-            .btn-play:hover { background-color: var(--grass-green); transform: translateY(-3px); box-shadow: 0 6px 0 var(--capy-dark); color: var(--capy-dark); }
-        }
-
-        /* CARD STILE CAPIBARA */
-        .project-card { 
-            background-color: #fff; 
-            border: 3px solid var(--capy-dark); 
-            border-radius: 20px; /* Più arrotondato */
-            overflow: hidden; 
-            box-shadow: 6px 6px 0px rgba(93, 64, 55, 0.15); 
-            display: flex; 
-            flex-direction: column; 
-            transition: 0.3s;
-        }
-        
-        .card-image { 
-            height: 160px; 
-            background-color: var(--water-blue); 
-            /* Pattern Onde */
-            background-image: radial-gradient(circle at 10px 10px, rgba(255,255,255,0.4) 2px, transparent 2.5px);
-            background-size: 20px 20px;
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 4rem; 
-            border-bottom: 3px solid var(--capy-dark);
-            transition: 0.3s;
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            display: flex; flex-direction: column;
             position: relative;
         }
 
-        /* Decorazione Yuzu sulla card */
-        .card-image::after {
-            content: '🍊';
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5rem;
-            animation: float 3s ease-in-out infinite;
-        }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(121, 85, 72, 0.2); }
 
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0px); } }
-        
-        .card-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; text-align: center; }
-        .card-content h3 { margin-top: 0; color: var(--capy-dark); font-size: 1.5rem; font-weight: 600; margin-bottom: 10px; }
-        .card-content p { color: #795548; line-height: 1.5; flex-grow: 1; font-size: 1rem; margin-bottom: 20px; }
-        
-        /* BOTTONE */
-        .btn-play { 
-            display: block; 
-            background-color: var(--yuzu-orange); 
-            color: var(--capy-dark); 
-            padding: 15px; 
-            text-align: center; 
-            text-decoration: none; 
-            border-radius: 15px; 
-            font-weight: bold; 
-            font-size: 1.1rem;
-            border: 2px solid var(--capy-dark);
-            box-shadow: 0 4px 0 var(--capy-dark); 
-            transition: all 0.1s; 
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .product-image-container {
+            height: 220px; width: 100%;
+            background-color: #f5f5f5;
+            overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
         }
         
-        .btn-play:active { 
-            transform: translateY(4px); 
-            box-shadow: 0 0 0 var(--capy-dark); 
-            background-color: #ffa726;
-        }
-        
-        footer { 
-            background-color: var(--capy-dark); 
-            color: var(--capy-light); 
-            text-align: center; 
-            padding: 2rem; 
-            margin-top: auto; 
-            font-size: 0.9rem;
-            border-radius: 30px 30px 0 0;
-        }
+        .product-image { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .product-card:hover .product-image { transform: scale(1.1); }
 
-        @media (max-width: 600px) {
-            header { border-radius: 0 0 20px 20px; }
-            header h1 { font-size: 2.2rem; }
-            .lang-switch { position: static; width: 100%; justify-content: center; margin-bottom: 15px; }
-            .project-card { margin-bottom: 10px; }
-            .btn-play { padding: 18px; }
+        .product-info { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+        
+        .category-tag { 
+            font-size: 0.75rem; color: var(--green-leaf); 
+            text-transform: uppercase; font-weight: 800; letter-spacing: 1px;
+            margin-bottom: 5px; 
+        }
+        
+        .product-title { font-size: 1.3rem; margin-bottom: 10px; color: var(--primary); }
+        .product-desc { font-size: 0.9rem; color: #757575; margin-bottom: 15px; flex-grow: 1; }
+        
+        .product-footer {
+            margin-top: auto; display: flex; justify-content: space-between; align-items: center;
+        }
+        .product-price { font-size: 1.4rem; font-weight: 700; color: var(--text-main); }
+        
+        .add-btn {
+            background-color: var(--accent); color: var(--text-main); border: none;
+            padding: 10px 15px; border-radius: 12px; cursor: pointer;
+            transition: 0.2s; font-weight: bold; display: flex; align-items: center; gap: 5px;
+        }
+        .add-btn:hover { background-color: #ffcc80; transform: scale(1.05); }
+
+        /* --- SIDEBAR CARRELLO --- */
+        .cart-sidebar {
+            position: fixed; top: 0; right: -400px;
+            width: 380px; height: 100vh;
+            background: var(--card-bg);
+            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 200; display: flex; flex-direction: column;
+        }
+        .cart-sidebar.open { right: 0; }
+
+        .cart-header {
+            padding: 1.5rem; border-bottom: 2px solid var(--bg-color);
+            display: flex; justify-content: space-between; align-items: center;
+            background: var(--primary); color: white;
+        }
+        .close-cart { cursor: pointer; font-size: 1.5rem; transition: 0.2s; }
+        .close-cart:hover { transform: rotate(90deg); }
+
+        .cart-items { flex-grow: 1; overflow-y: auto; padding: 1.5rem; }
+
+        .cart-item {
+            display: flex; gap: 15px; margin-bottom: 15px; padding-bottom: 15px;
+            border-bottom: 1px dashed #bdbdbd; align-items: center;
+        }
+        .cart-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 10px; border: 1px solid #eee; }
+        .item-details { flex-grow: 1; }
+        .item-title { font-size: 1rem; font-weight: 700; color: var(--primary); }
+        .item-price { font-size: 0.9rem; color: #757575; }
+        .remove-btn { color: #e57373; cursor: pointer; font-size: 1.1rem; transition:0.2s; }
+        .remove-btn:hover { color: #d32f2f; transform: scale(1.2); }
+
+        .cart-footer { padding: 2rem; background: var(--bg-color); border-top: 2px solid #e0e0e0; }
+        .total-row { display: flex; justify-content: space-between; font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem; color: var(--primary); }
+        
+        .checkout-btn {
+            width: 100%; background-color: var(--primary); color: white;
+            padding: 15px; border: none; border-radius: 12px;
+            font-size: 1.1rem; font-weight: 600; cursor: pointer;
+            transition: 0.2s; box-shadow: 0 4px 0 var(--primary-dark);
+        }
+        .checkout-btn:hover { transform: translateY(2px); box-shadow: 0 2px 0 var(--primary-dark); background-color: #5d4037; }
+
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(62, 39, 35, 0.6); z-index: 150;
+            display: none; backdrop-filter: blur(3px);
+        }
+        .overlay.active { display: block; }
+
+        @media (max-width: 500px) {
+            .cart-sidebar { width: 100%; }
+            .hero h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="lang-switch">
-        <button class="lang-btn" onclick="setLanguage('it')">IT 🇮🇹</button>
-        <button class="lang-btn" onclick="setLanguage('en')">EN 🇬🇧</button>
-        <button class="lang-btn" onclick="setLanguage('sk')">SK 🇸🇰</button>
+    <header>
+        <a href="#" class="logo">
+            <i class="fa-solid fa-paw"></i> CapyShop
+        </a>
+        <div class="cart-btn-container" onclick="toggleCart()">
+            <i class="fa-solid fa-basket-shopping cart-icon"></i>
+            <span class="cart-badge" id="cartCount">0</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Statuine Chill 🍊</h1>
+        <p>Porta la calma suprema nella tua casa.</p>
+    </section>
+
+    <div class="container">
+        
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterProducts('all', this)">Tutte</button>
+            <button class="filter-btn" onclick="filterProducts('resina', this)">Resina</button>
+            <button class="filter-btn" onclick="filterProducts('legno', this)">Legno</button>
+            <button class="filter-btn" onclick="filterProducts('peluche', this)">Morbide</button>
+            <button class="filter-btn" onclick="filterProducts('limited', this)">Rarità</button>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+            </div>
     </div>
-    <h1 data-i18n="mainTitle">🦫 Capy Arcade</h1>
-    <p data-i18n="subTitle">Rilassati e Gioca</p>
-</header>
 
-<div class="container">
-    
-    <section>
-        <h2 data-i18n="sectionArcade">Azione & Relax</h2>
-        <div class="games-grid three-cols">
-            
-            <div class="project-card">
-                <div class="card-image">🌿</div>
-                <div class="card-content">
-                    <h3 data-i18n="gameMarioTitle">Super Capy</h3>
-                    <p data-i18n="gameMarioDesc">Salta sui prati verdi!</p>
-                    <a href="supermario.html" class="btn-play" data-i18n="playBtn">Gioca</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="card-image">🦫</div>
-                <div class="card-content">
-                    <h3 data-i18n="game1Title">Capy Run</h3>
-                    <p data-i18n="game1Desc">Corri senza versare l'aranciata.</p>
-                    <a href="trex.html" class="btn-play" data-i18n="playBtn">Gioca</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="card-image">🛸</div>
-                <div class="card-content">
-                    <h3 data-i18n="game2Title">Astro Capy</h3>
-                    <p data-i18n="game2Desc">Nello spazio nessuno ti sente squittire.</p>
-                    <a href="spaceshooter.html" class="btn-play" data-i18n="playBtn">Gioca</a>
-                </div>
-            </div>
-
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Il tuo Cestino</h3>
+            <span class="close-cart" onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></span>
         </div>
-    </section>
-
-    <section>
-        <h2 data-i18n="sectionLogic">Mente & Zen</h2>
-        <div class="games-grid three-cols">
-            
-            <div class="project-card">
-                <div class="card-image">🃏</div>
-                <div class="card-content">
-                    <h3 data-i18n="game3Title">Capy Memory</h3>
-                    <p data-i18n="game3Desc">Dove era l'altro capibara?</p>
-                    <a href="memory.html" class="btn-play" data-i18n="playBtn">Gioca</a>
-                </div>
+        <div class="cart-items" id="cartItemsContainer">
             </div>
-
-            <div class="project-card">
-                <div class="card-image">🛁</div>
-                <div class="card-content">
-                    <h3 data-i18n="game4Title">Mistero Termale</h3>
-                    <p data-i18n="game4Desc">Un'avventura grafica rilassante.</p>
-                    <a href="avventura.html" class="btn-play" data-i18n="playBtn">Gioca</a>
-                </div>
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>Totale:</span>
+                <span id="cartTotal">€ 0.00</span>
             </div>
-
-            <div class="project-card">
-                <div class="card-image">🧱</div>
-                <div class="card-content">
-                    <h3 data-i18n="gameTetrisTitle">Stacky-Bara</h3>
-                    <p data-i18n="gameTetrisDesc">Incastra i blocchi con calma.</p>
-                    <a href="tetris.html" class="btn-play" data-i18n="playBtn">Gioca</a>
-                </div>
-            </div>
-
+            <button class="checkout-btn" onclick="checkout()">
+                <i class="fa-solid fa-credit-card"></i> Paga Ora
+            </button>
         </div>
-    </section>
+    </div>
 
-</div>
+<script>
+    // --- DATABASE PRODOTTI (Immagini prese da Unsplash) ---
+    const products = [
+        { 
+            id: 1, 
+            name: "Capibara Onsen", 
+            price: 24.99, 
+            category: "resina", 
+            desc: "Classico capibara che fa il bagno con un'arancia yuzu in testa.",
+            img: "https://images.unsplash.com/photo-1549603507-28d821215b49?auto=format&fit=crop&w=600&q=80" 
+        },
+        { 
+            id: 2, 
+            name: "Capy Zen Master", 
+            price: 29.99, 
+            category: "resina", 
+            desc: "In posizione di meditazione. Porta pace sulla tua scrivania.",
+            img: "https://images.unsplash.com/photo-1622359522927-44026330aa18?auto=format&fit=crop&w=600&q=80" 
+        },
+        { 
+            id: 3, 
+            name: "Capibara Intagliato", 
+            price: 45.00, 
+            category: "legno", 
+            desc: "Scolpito a mano in legno di quercia sostenibile.",
+            img: "https://plus.unsplash.com/premium_photo-1664302152994-e35496a9504a?auto=format&fit=crop&w=600&q=80" 
+        },
+        { 
+            id: 4, 
+            name: "Capy Fluffy Plush", 
+            price: 19.99, 
+            category: "peluche", 
+            desc: "Non è una statuina, ma è troppo morbido per non comprarlo.",
+            img: "https://images.unsplash.com/photo-1579621970563-ebec7560eb3e?auto=format&fit=crop&w=600&q=80" 
+        },
+        { 
+            id: 5, 
+            name: "Capibara d'Oro", 
+            price: 99.99, 
+            category: "limited", 
+            desc: "Edizione limitata verniciata in foglia d'oro finto.",
+            img: "https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?auto=format&fit=crop&w=600&q=80" 
+        },
+        { 
+            id: 6, 
+            name: "Famiglia Capy", 
+            price: 35.50, 
+            category: "resina", 
+            desc: "Set di 3 statuine: Mamma, Papà e Cucciolo.",
+            img: "https://images.unsplash.com/photo-1505672675380-41225d7b87d3?auto=format&fit=crop&w=600&q=80" 
+        },
+        { 
+            id: 7, 
+            name: "Capibara Guerriero", 
+            price: 32.00, 
+            category: "limited", 
+            desc: "Con piccola armatura samurai e katana. Epico.",
+            img: "https://images.unsplash.com/photo-1599708912384-a47f48b0a992?auto=format&fit=crop&w=600&q=80" 
+        },
+        { 
+            id: 8, 
+            name: "Capibara Totem", 
+            price: 50.00, 
+            category: "legno", 
+            desc: "Tre capibara impilati uno sopra l'altro in legno scuro.",
+            img: "https://images.unsplash.com/photo-1632515907425-4c600139369d?auto=format&fit=crop&w=600&q=80" 
+        }
+    ];
 
-<footer>
-    <p data-i18n="footerText">&copy; 2025 Capy Arcade. Stay Chill.</p>
-</footer>
+    // --- LOGICA (Identica a prima, adattata al tema) ---
+    let cart = [];
+    const grid = document.getElementById('productGrid');
+    const cartSidebar = document.getElementById('cartSidebar');
+    const overlay = document.getElementById('overlay');
+    const cartItemsContainer = document.getElementById('cartItemsContainer');
+    const cartCount = document.getElementById('cartCount');
+    const cartTotal = document.getElementById('cartTotal');
 
-<script src="lingue.js"></script>
+    function init() { renderProducts(products); }
 
+    function renderProducts(list) {
+        grid.innerHTML = "";
+        list.forEach(product => {
+            const card = document.createElement('div');
+            card.classList.add('product-card');
+            card.innerHTML = `
+                <div class="product-image-container">
+                    <img src="${product.img}" alt="${product.name}" class="product-image">
+                </div>
+                <div class="product-info">
+                    <span class="category-tag">${product.category}</span>
+                    <h3 class="product-title">${product.name}</h3>
+                    <p class="product-desc">${product.desc}</p>
+                    <div class="product-footer">
+                        <div class="product-price">€ ${product.price.toFixed(2)}</div>
+                        <button class="add-btn" onclick="addToCart(${product.id})">
+                            <i class="fa-solid fa-plus"></i> Aggiungi
+                        </button>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    function filterProducts(category, btn) {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        if (category === 'all') renderProducts(products);
+        else renderProducts(products.filter(p => p.category === category));
+    }
+
+    function addToCart(id) {
+        const product = products.find(p => p.id === id);
+        const existingItem = cart.find(item => item.id === id);
+        if (existingItem) existingItem.quantity++;
+        else cart.push({ ...product, quantity: 1 });
+        updateCartUI();
+        toggleCart(true);
+    }
+
+    function removeFromCart(id) {
+        cart = cart.filter(item => item.id !== id);
+        updateCartUI();
+    }
+
+    function updateCartUI() {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCount.innerText = totalItems;
+        cartItemsContainer.innerHTML = "";
+        let totalPrice = 0;
+
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = `<div style="text-align:center; padding:20px; color:#999;">
+                <i class="fa-solid fa-basket-shopping" style="font-size:3rem; margin-bottom:10px;"></i>
+                <p>Il cestino è vuoto...</p>
+            </div>`;
+        } else {
+            cart.forEach(item => {
+                totalPrice += item.price * item.quantity;
+                const itemEl = document.createElement('div');
+                itemEl.classList.add('cart-item');
+                itemEl.innerHTML = `
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="item-details">
+                        <div class="item-title">${item.name}</div>
+                        <div class="item-price">€ ${item.price} x ${item.quantity}</div>
+                    </div>
+                    <div class="remove-btn" onclick="removeFromCart(${item.id})">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(itemEl);
+            });
+        }
+        cartTotal.innerText = "€ " + totalPrice.toFixed(2);
+    }
+
+    function toggleCart(forceOpen = false) {
+        if (forceOpen) { cartSidebar.classList.add('open'); overlay.classList.add('active'); }
+        else { cartSidebar.classList.toggle('open'); overlay.classList.toggle('active'); }
+    }
+
+    function checkout() {
+        if (cart.length === 0) { alert("Il cestino è vuoto!"); return; }
+        if (confirm(`Confermi l'ordine di ${cartTotal.innerText}? I capibara arriveranno presto!`)) {
+            alert("Grazie! Ordine confermato. 🍊");
+            cart = []; updateCartUI(); toggleCart();
+        }
+    }
+
+    init();
+</script>
 </body>
 </html>
